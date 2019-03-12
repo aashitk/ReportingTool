@@ -1,0 +1,23 @@
+<div class="information-container">
+    <div class="heading">
+        <div>
+            <a [routerLink]="['/home']">Back to home</a>
+        </div>
+        <p>Today’s stock market action</p>
+    </div>
+    <div class="container">
+        <div class="heading-row">
+            <div class="heading-cell">Ticker</div>
+            <div class="heading-cell">Price</div>
+            <div class="heading-cell">Last Update</div>
+        </div>
+        <div class="stock-details">
+            <div class="stock-row" *ngFor="let row of list;let j = index">
+                <div class="cell ticker-cell">{{row.ticker}}</div>
+                <div class="cell price-cell" [ngClass]="(row.status== 0) ? ((row.status== 2) ? 'new':'high'):'low'">{{row.price}}</div>
+                <div class="cell" *ngIf="row.dateFormat == 0">{{row.lastUpdated | date:'medium'}}</div>
+                <div class="cell" *ngIf="row.dateFormat == 1">{{row.lastUpdated | date:'shortTime'}}</div>
+            </div>
+        </div>
+    </div>
+</div>
